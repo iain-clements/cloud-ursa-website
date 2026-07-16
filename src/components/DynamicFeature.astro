@@ -1,0 +1,13 @@
+---
+const stories = [
+  { title: "Scaling FinTech Data", link: "/case-studies" },
+  { title: "RingsTrue Deployment", link: "/ringstrue" },
+];
+// Randomly pick one on page load
+const feature = stories[Math.floor(Math.random() * stories.length)];
+---
+<section class="p-8 border-2 border-blue-600 rounded-2xl bg-blue-50">
+  <h2 class="text-xl font-bold">Featured Success Story</h2>
+  <p class="mt-2 text-gray-700">See how we helped a client with: {feature.title}</p>
+  <a href={feature.link} class="mt-4 inline-block text-blue-600 font-bold">Read the story →</a>
+</section>

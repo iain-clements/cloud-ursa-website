@@ -1,0 +1,40 @@
+---
+/* 
+ * Version: 0.1 
+ * Date: 2026-07-16 18:25
+ */
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/ui/Container.astro';
+import RingsTrueTester from '../components/RingsTrueTester.astro';
+import CountryFactSnippet from '../components/CountryFactSnippet.astro';
+
+---
+<Layout title="Test RingsTrue | Live Validation Tool">
+  <Container>
+    <main class="py-16 max-w-2xl mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-6">Test RingsTrue</h1>
+      <p class="text-xl text-gray-600 mb-12">
+        Enter any phone number below to see how our validation engine performs in real-time.
+      </p>
+      
+      <RingsTrueTester />
+
+      <div class="mt-16 text-left border-t pt-8">
+        <h2 class="text-xl font-bold mb-4">How the validation works:</h2>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700">
+          <li><strong>Formatting:</strong> Checks against global E.164 standards.</li>
+          <li><strong>Reachability:</strong> Pings the line to verify it's active.</li>
+          <li><strong>Consistency:</strong> Ensures data matches the user's country code.</li>
+        </ul>
+      </div>
+
+      <section class="mt-16 border-t pt-10">
+    <h2 class="text-2xl font-bold mb-6">Quick Fact</h2>
+    <!-- This will show a random country code fact -->
+    <CountryFactSnippet />
+  </section>
+
+  
+    </main>
+  </Container>
+</Layout>

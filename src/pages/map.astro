@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { countryData } from '../data/countrycodes.js';
+---
+
+<Layout title="Map">
+  <style>
+    path { cursor: pointer; transition: fill 0.2s; }
+    path:hover { fill: #ccc; }
+  </style>
+
+  <div id="map-container">
+    <svg viewBox="0 0 1400 900" class="w-full" data-astro-cid-lcobthjc>
+      <path d="M1383 261.6...z" id="AF" name="Afghanistan"></path>
+      <path id="AO" class="Angola" d="M 1121.2 572...Z"></path>
+      <path id="AO-2" class="Angola" d="M 1055.3 539...Z"></path>
+      <path d="M1088 228...z" id="AL" name="Albania"></path>
+      <path d="M1296.2 336.7...z" id="AE" name="United Arab Emirates"></path>
+      <path id="AR" class="Argentina" d="M 669.1 851.7...Z"></path>
+      <path id="AR-2" class="Argentina" d="M 638.6 644.7...Z"></path>
+      <path d="M1230.8 253...z" id="AM" name="Armenia"></path>
+      <path id="AU" class="Australia" d="M 1743 763.6...Z"></path>
+      <path id="AU-2" class="Australia" d="M 1793.5 590.2...Z"></path>
+      <path d="M1070.6 190.8...z" id="AT" name="Austria"></path>
+      <path id="AZ" class="Azerbaijan" d="M 1229 253.2...Z"></path>
+      <path id="AZ-2" class="Azerbaijan" d="M 1235.3 236.2...Z"></path>
+      <path d="M1154.9 530.4...z" id="BI" name="Burundi"></path>
+      <path d="M1016.5 177.1...z" id="BE" name="Belgium"></path>
+      <path d="M1006.7 427...z" id="BJ" name="Benin"></path>
+      <path d="M988.5 406...z" id="BF" name="Burkina Faso"></path>
+      <path d="M1500.6 360.3...z" id="BD" name="Bangladesh"></path>
+      <path d="M1132.6 221.6...z" id="BG" name="Bulgaria"></path>
+      <path d="M1083 214.3...z" id="BA" name="Bosnia and Herzegovina"></path>
+      <path d="M1141.6 162.7...z" id="BY" name="Belarus"></path>
+      <path d="M487.8 399.8...z" id="BZ" name="Belize"></path>
+      <path d="M662.5 631.4...z" id="BO" name="Bolivia"></path>
+      <path d="M665.8 489.6...z" id="BR" name="Brazil"></path>
+      <path d="M1633.1 472.8...z" id="BN" name="Brunei Darussalam"></path>
+      <path d="M1488.8 323.5...z" id="BT" name="Bhutan"></path>
+      <path d="M1127.6 615.7...z" id="BW" name="Botswana"></path>
+      <path d="M1121.3 446.5...z" id="CF" name="Central African Republic"></path>
+      <path id="CA" class="Canada" d="M 665.9 203.6...Z"></path>
+      </svg>
+  </div>
+
+  <script>
+    document.querySelectorAll('path').forEach(path => {
+      path.addEventListener('click', (e) => {
+        const id = e.target.getAttribute('id');
+        if (id) console.log("Country Code:", id);
+      });
+    });
+  </script>
+</Layout>

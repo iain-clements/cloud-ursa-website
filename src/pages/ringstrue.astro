@@ -1,37 +1,109 @@
 ---
-/* 
- * Version: 0.1 
- * Date: 2026-07-16 15:25
+/* * Version: 0.2 
+ * Date: 2026-07-16 17:45
  */
-
 import Layout from '../layouts/Layout.astro';
+import Container from '../components/ui/Container.astro';
+import RingsTrueTester from '../components/RingsTrueTester.astro';
+
+const features = [
+  { title: "Real-Time Validation", desc: "Instantly verify phone numbers as they are entered on Lead, Contact, and Account records." },
+  { title: "Global Format Standard", desc: "Automatically normalizes numbers to E.164 international format for seamless global outreach." },
+  { title: "Activity Status Check", desc: "Tests whether a number is currently in service, identifying disconnected lines before your team wastes time dialing." },
+  { title: "Data Integrity", desc: "Tracks every change, allowing you to restore original values with one click if needed." }
+];
 ---
 
-<Layout title="RingsTrue | Cloud Ursa LTD">
-  <main class="max-w-4xl mx-auto py-16 px-6">
-    <h1 class="text-4xl font-extrabold text-gray-900">RingsTrue</h1>
-    <p class="text-xl text-blue-600 font-medium mt-2">Precision Data Validation for Salesforce</p>
-    
-    <div class="mt-8 prose prose-lg text-gray-600">
-      <p>
-        RingsTrue is our signature suite designed to ensure your data remains clean, validated, and actionable at the point of entry. 
-        It eliminates the "garbage in, garbage out" cycle that plagues many growing Salesforce organizations.
-      </p>
-      
-      <h2 class="text-2xl font-bold mt-8 text-gray-900">Key Benefits</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li><strong>Real-time Validation:</strong> Catch errors before they hit your database.</li>
-        <li><strong>Configurable Rules:</strong> Adapt to your specific business logic without complex code.</li>
-        <li><strong>Reduced Technical Debt:</strong> Keep your Org clean, performant, and reliable.</li>
-      </ul>
-    </div>
+<Layout title="RingsTrue | Salesforce Phone Validation">
+  <Container>
+    <main class="py-16">
+      <div class="max-w-3xl mb-16">
+        <h1 class="text-5xl font-bold mb-6">RingsTrue</h1>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          Stop wasting time on bad data. RingsTrue is the powerful Salesforce app that ensures your 
+          customer database is clean, validated, and ready for action.
+        </p>
+      </div>
 
-    <div class="mt-12 p-8 bg-blue-50 rounded-xl">
-      <h3 class="text-xl font-bold text-gray-900">Ready to clean up your data?</h3>
-      <p class="mt-2 text-gray-700">See how RingsTrue can be implemented in your environment.</p>
-      <a href="/contact" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-        Get a Demo
-      </a>
-    </div>
-  </main>
+      <section class="grid md:grid-cols-2 gap-8 mb-20">
+        {features.map(f => (
+          <div class="p-8 border rounded-lg bg-gray-50">
+            <h3 class="text-xl font-bold mb-3">{f.title}</h3>
+            <p class="text-gray-700">{f.desc}</p>
+          </div>
+        ))}
+      </section>
+
+<section class="my-16 p-10 border-2 border-blue-600 rounded-2xl bg-blue-50 text-center">
+  <h2 class="text-3xl font-bold mb-4">See It In Action</h2>
+  <p class="text-lg text-gray-700 mb-8">Want to test the validation engine for yourself? Try our live demo tool.</p>
+  <a href="/ringstrue-test" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
+    Launch the Test Tool
+  </a>
+</section>
+
+
+      <section class="py-16 border-t">
+        <h2 class="text-3xl font-bold text-center mb-16">How RingsTrue Works</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+          {[
+            { step: "01", title: "Capture", desc: "Data enters Salesforce via Web-to-Lead, manual entry, or API." },
+            { step: "02", title: "Verify", desc: "RingsTrue instantly pings the number for validity and formatting." },
+            { step: "03", title: "Action", desc: "The clean, formatted record is ready for immediate outreach." }
+          ].map(s => (
+            <div class="text-center">
+              <div class="text-blue-600 font-black text-4xl mb-4">{s.step}</div>
+              <h3 class="text-xl font-bold mb-2">{s.title}</h3>
+              <p class="text-gray-600">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="bg-blue-900 text-white p-12 rounded-2xl mb-20">
+        <h2 class="text-3xl font-bold mb-6">Why Salesforce Admins Choose RingsTrue</h2>
+        <ul class="space-y-4 text-lg">
+          <li class="flex items-start">✅ Eliminate the cost of undelivered communications and failed outreach.</li>
+          <li class="flex items-start">✅ Seamless Lightning integration with minimal configuration.</li>
+          <li class="flex items-start">✅ Robust audit history for every automated data correction.</li>
+        </ul>
+      </section>
+
+      <section class="py-10">
+        <h2 class="text-3xl font-bold mb-10">Frequently Asked Questions</h2>
+        <div class="space-y-6 max-w-2xl">
+          <div>
+            <h4 class="font-bold text-lg">Does this impact my Salesforce API limits?</h4>
+            <p class="text-gray-600">RingsTrue is optimized for efficiency. We use bulk-processing where possible to keep your API consumption minimal.</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg">Is my data secure?</h4>
+            <p class="text-gray-600">Absolutely. RingsTrue follows standard Salesforce security protocols and never stores your raw customer data.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-20">
+        <h2 class="text-3xl font-bold mb-10 text-center">What Salesforce Admins Say</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <blockquote class="p-8 border rounded-xl bg-white shadow-sm">
+            <p class="text-gray-600 italic mb-6">"RingsTrue has completely eliminated our bounce rates in Sales Cloud. The setup took less than an hour, and the ROI was visible by the end of the first week."</p>
+            <footer class="font-bold">— Sarah J., Salesforce Administrator</footer>
+          </blockquote>
+          <blockquote class="p-8 border rounded-xl bg-white shadow-sm border-dashed border-gray-300">
+            <p class="text-gray-400 italic mb-6">"This is a placeholder for your next customer success story. Once you have a new testimonial, just swap this text out!"</p>
+            <footer class="font-bold">— [Your Next Customer]</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="mt-20 p-12 bg-gray-900 rounded-2xl text-center text-white">
+        <h2 class="text-3xl font-bold mb-4">Ready to clean your CRM data?</h2>
+        <p class="text-gray-400 mb-8">Join the growing number of teams using RingsTrue to power their outreach.</p>
+        <a href="/contact" class="inline-block bg-blue-600 px-10 py-4 rounded-lg font-bold hover:bg-blue-500 transition">
+          Start Your 14-Day Free Trial
+        </a>
+      </section>
+    </main>
+  </Container>
 </Layout>

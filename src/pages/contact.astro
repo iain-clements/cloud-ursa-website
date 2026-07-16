@@ -5,6 +5,7 @@
  */
 
 import Layout from '../layouts/Layout.astro';
+import DynamicFeature from '../components/DynamicFeature.astro';
 ---
 
 <Layout title="Contact | Cloud Ursa LTD">
@@ -13,7 +14,13 @@ import Layout from '../layouts/Layout.astro';
     <p class="mt-4 text-lg text-gray-600">
       Have a Salesforce challenge or an integration project? Fill out the form below, and I'll get back to you shortly.
     </p>
-
+<h1>Let's work together</h1>
+  <p>Fill out the form below...</p>
+  
+  <!-- Nudge them with proof -->
+  <div class="mt-12">
+    <DynamicFeature />
+  </div>
     <!-- Replace the action URL with your Formspree/Make.com webhook endpoint -->
     <form action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST" class="mt-8 space-y-6">
       <div>

@@ -1,0 +1,43 @@
+---
+/* 
+ * Version: 0.1 
+ * Date: 2026-07-16 17:55
+ */
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/ui/Container.astro';
+---
+<Layout title="Managed Services | Cloud Ursa">
+  <Container>
+    <main class="py-16">
+      <h1 class="text-4xl font-bold mb-6">Managed Services</h1>
+      <p class="text-xl text-gray-600 mb-12">
+        Let us handle the complexity of your Salesforce environment so you can focus on your business.
+      </p>
+
+      <section class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="p-8 bg-gray-50 rounded-lg">
+          <h2 class="text-2xl font-bold mb-4">Proactive Health Monitoring</h2>
+          <p class="text-gray-700">We don't wait for things to break. We continuously monitor your Org for governor limit warnings, integration failures, and security gaps.</p>
+        </div>
+        <div class="p-8 bg-gray-50 rounded-lg">
+          <h2 class="text-2xl font-bold mb-4">On-Demand Expertise</h2>
+          <p class="text-gray-700">Access our lead consultants for rapid-fire troubleshooting, configuration requests, or complex reporting requirements.</p>
+        </div>
+      </section>
+
+      <div class="bg-blue-900 text-white p-12 rounded-2xl">
+        <h2 class="text-2xl font-bold mb-6">Why Partner with Cloud Ursa?</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start">✅ <strong>Peace of Mind:</strong> We treat your Org like our own, ensuring uptime and stability.</li>
+          <li class="flex items-start">✅ <strong>Strategic Alignment:</strong> Regular reviews to ensure your Salesforce setup evolves with your business.</li>
+          <li class="flex items-start">✅ <strong>Cost Predictability:</strong> No surprise invoices; just clear, monthly managed service agreements.</li>
+        </ul>
+        <div class="mt-10">
+          <a href="/contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-500">
+            Discuss Your Requirements
+          </a>
+        </div>
+      </div>
+    </main>
+  </Container>
+</Layout>

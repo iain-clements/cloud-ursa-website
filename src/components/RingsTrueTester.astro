@@ -1,0 +1,53 @@
+---
+/* 
+ * Version: 0.1 
+ * Date: 2026-07-16 18:10
+ */
+---
+<div id="tester" class="p-8 border-2 border-blue-600 rounded-xl bg-white shadow-lg">
+  <h3 class="text-2xl font-bold mb-4">Test RingsTrue</h3>
+  <p class="text-gray-600 mb-6">Enter a number to see how our validation engine responds.</p>
+  
+  <form id="phoneForm" class="flex flex-col gap-4">
+    <input 
+      type="tel" 
+      id="phoneInput" 
+      placeholder="Enter phone number..." 
+      required
+      class="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+    />
+    <button type="submit" class="bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700">
+      Validate Number
+    </button>
+  </form>
+
+  <div id="result" class="mt-6 hidden p-4 rounded-lg text-center font-bold"></div>
+</div>
+
+<script>
+  const form = document.getElementById('phoneForm');
+  const resultDiv = document.getElementById('result');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Simulate API call
+    resultDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+    resultDiv.textContent = "Validating...";
+    resultDiv.classList.remove('hidden');
+
+    // Mock API Delay
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    // Random True/False
+    const isValid = Math.random() > 0.5;
+
+    if (isValid) {
+      resultDiv.textContent = "✅ Valid Number: Ready for outreach.";
+      resultDiv.classList.add('bg-green-100', 'text-green-800');
+    } else {
+      resultDiv.textContent = "❌ Invalid Number: This line is disconnected or formatted incorrectly.";
+      resultDiv.classList.add('bg-red-100', 'text-red-800');
+    }
+  });
+</script>

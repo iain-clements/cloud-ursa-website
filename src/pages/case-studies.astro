@@ -1,0 +1,44 @@
+---
+/* * Version: 0.4 
+ * Date: 2026-07-16 19:45
+ */
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/ui/Container.astro';
+import { caseStudies } from '../data/caseStudies.js';
+import { clients } from '../data/clients.js';
+---
+
+<Layout title="Case Studies | Cloud Ursa">
+  <Container>
+    <main class="py-16">
+      <h1 class="text-4xl font-bold mb-4">Case Studies</h1>
+      <p class="text-xl text-gray-600 mb-12">Real-world results through intelligent Salesforce engineering.</p>
+      
+      <div class="space-y-16">
+        {caseStudies.map((study) => (
+          <article class="border-l-4 border-blue-600 pl-6 py-2">
+            <h2 class="text-2xl font-bold">{study.title}</h2>
+            <p class="mt-2 text-blue-800 font-medium italic">{study.subtitle}</p>
+            <p class="mt-4 text-gray-700 leading-relaxed">{study.summary}</p>
+            <div class="mt-6 flex gap-2">
+              {study.tags.map(tag => (
+                <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <section class="mt-20 border-t pt-10">
+        <h3 class="text-xl font-bold mb-8">Clients we've helped:</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {clients.map(client => (
+            <img src={client.logo} alt={client.name} class="h-10 object-contain grayscale" />
+          ))}
+        </div>
+      </section>
+    </main>
+  </Container>
+</Layout>

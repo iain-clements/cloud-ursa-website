@@ -1,0 +1,24 @@
+---
+const clients = [
+  { name: "FinTech Corp", logo: "/logos/fintech.png" },
+  { name: "Retail Giant", logo: "/logos/retail.png" },
+  { name: "HealthCare Inc", logo: "/logos/health.png" },
+];
+---
+<div class="marquee-container overflow-hidden py-10 bg-gray-50">
+  <div class="flex gap-12 animate-scroll">
+    {[...clients, ...clients].map(client => (
+      <div class="min-w-[150px] grayscale hover:grayscale-0 transition">
+        <img src={client.logo} alt={client.name} class="h-12 object-contain" />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-scroll { animation: scroll 20s linear infinite; }
+</style>

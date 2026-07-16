@@ -1,0 +1,8 @@
+---
+import { countryCodes } from '../data/countryCodes.js';
+const random = countryCodes[Math.floor(Math.random() * countryCodes.length)];
+---
+<div class="p-4 border rounded-lg bg-blue-50 text-sm italic">
+  <strong>Did you know?</strong> The international dialing code for {random.name} is <strong>{random.code}</strong>. 
+  <a href="/quiz" class="text-blue-600 underline">Try our country code quiz!</a>
+</div>
