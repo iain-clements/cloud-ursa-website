@@ -1,0 +1,39 @@
+---
+/* 
+ * Version: 0.1 
+ * Date: 2026-07-16 15:55
+ */
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact | Cloud Ursa LTD">
+  <main class="max-w-2xl mx-auto py-16 px-6">
+    <h1 class="text-4xl font-extrabold text-gray-900">Let's Connect</h1>
+    <p class="mt-4 text-lg text-gray-600">
+      Have a Salesforce challenge or an integration project? Fill out the form below, and I'll get back to you shortly.
+    </p>
+
+    <!-- Replace the action URL with your Formspree/Make.com webhook endpoint -->
+    <form action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST" class="mt-8 space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Name</label>
+        <input type="text" name="name" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" name="email" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Message</label>
+        <textarea name="message" rows="4" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+        Send Message
+      </button>
+    </form>
+  </main>
+</Layout>

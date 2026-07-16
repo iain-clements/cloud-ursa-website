@@ -1,5 +1,59 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/sections/Hero.astro";
+/* 
+ * Version: 0.2 
+ * Date: 2026-07-16 17:10
+ */
+
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const allPosts = await getCollection('blog');
 ---
-<BaseLayout title="Cloud Ursa"><Hero /></BaseLayout>
+
+<Layout title="Cloud Ursa LTD | Salesforce & API Integration Experts">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <!-- Hero Section -->
+    <section class="text-center py-12">
+      <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight">
+        Complex Salesforce Challenges, <span class="text-blue-600">Simplified.</span>
+      </h1>
+      <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+        We bridge the gap between your business goals and technical reality. From custom API integrations to platform rescue missions, Cloud Ursa ensures your CRM works for you.
+      </p>
+      <div class="mt-10 flex gap-4 justify-center">
+        <a href="/contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+          Book a Consultation
+        </a>
+      </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="py-16 grid md:grid-cols-3 gap-8">
+      <div class="p-6 border rounded-xl hover:shadow-lg transition">
+        <h3 class="text-xl font-bold">Integration</h3>
+        <p class="mt-2 text-gray-600">Secure, real-time middleware connecting your Salesforce to any ERP or proprietary database.</p>
+      </div>
+      <div class="p-6 border rounded-xl hover:shadow-lg transition">
+        <h3 class="text-xl font-bold">Recovery</h3>
+        <p class="mt-2 text-gray-600">Rescue missions for struggling Orgs. We stabilize, document, and streamline your environment.</p>
+      </div>
+      <div class="p-6 border rounded-xl hover:shadow-lg transition">
+        <h3 class="text-xl font-bold">Tooling</h3>
+        <p class="mt-2 text-gray-600">Engineered custom solutions like RingsTrue to keep your data clean and actionable.</p>
+      </div>
+    </section>
+
+    <!-- Blog Section (No nested Layout here!) -->
+    <section class="py-16">
+      <h2 class="text-3xl font-bold mb-8">Latest Insights</h2>
+      <ul>
+        {allPosts.map((post) => (
+          <li class="mb-4">
+          <a href={`/blog/${post.id}`} class="text-xl text-blue-600 hover:underline"> {post.data.title}
+</a>            <p class="text-gray-500">{post.data.pubDate.toLocaleDateString()}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>

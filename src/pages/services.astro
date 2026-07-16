@@ -1,0 +1,46 @@
+---
+/* 
+ * Version: 0.1 
+ * Date: 2026-07-16 14:50
+ */
+
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    title: "Integration Architectures",
+    description: "We design secure, real-time middleware and API bridges between Salesforce, your ERP, and your proprietary databases to eliminate manual data entry.",
+  },
+  {
+    title: "Platform Recovery & Managed Services",
+    description: "Inherited a messy Org? We stabilize, document, and streamline struggling environments so your team can focus on growth instead of debugging.",
+  },
+  {
+    title: "Custom Tooling (RingsTrue)",
+    description: "Our signature suite ensures your data remains clean, validated, and actionable at the point of entry.",
+  }
+];
+---
+
+<Layout title="Services | Cloud Ursa LTD">
+  <main class="max-w-4xl mx-auto py-12 px-6">
+    <h1 class="text-4xl font-bold mb-8 text-gray-900">Our Services</h1>
+    
+    <div class="space-y-12">
+      {services.map((service) => (
+        <section class="border-l-4 border-blue-600 pl-6">
+          <h2 class="text-2xl font-semibold text-gray-800">{service.title}</h2>
+          <p class="mt-2 text-lg text-gray-600 leading-relaxed">{service.description}</p>
+        </section>
+      ))}
+    </div>
+
+    <div class="mt-16 p-8 bg-gray-50 rounded-lg">
+      <h3 class="text-xl font-bold">Ready to transform your Salesforce environment?</h3>
+      <p class="mt-2">Contact us today to discuss your technical challenges.</p>
+      <a href="/contact" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+        Book a Consultation
+      </a>
+    </div>
+  </main>
+</Layout>
