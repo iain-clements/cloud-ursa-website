@@ -1,0 +1,26 @@
+---
+/* 
+ * Version: 0.1
+ * Date: 2026-07-17 12:15
+ */
+import { reviews } from '../data/reviews.js';
+const random = reviews[Math.floor(Math.random() * reviews.length)];
+---
+
+<section class="my-12">
+  <div class="bg-white shadow-md rounded-xl border-2 border-blue-600 p-6 md:p-8">
+    <div class="flex flex-col gap-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-600">
+        Customer Review
+      </span>
+      <p class="text-xl font-medium text-gray-950 leading-snug italic">
+        "{random.comment}"
+      </p>
+      <div class="flex items-center gap-2 mt-2">
+        <span class="font-bold text-gray-800">— {random.reviewer}</span>
+        <span class="text-gray-400">|</span>
+        <span class="text-yellow-500 font-bold">{'★'.repeat(random.rating)}</span>
+      </div>
+    </div>
+  </div>
+</section>

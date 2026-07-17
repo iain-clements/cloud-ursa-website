@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro';
 import Container from '../components/ui/Container.astro';
 import RingsTrueTester from '../components/RingsTrueTester.astro';
 import CountryFactSnippet from '../components/CountryFactSnippet.astro';
+import ReviewSnippet from '../components/ReviewSnippet.astro';
 
 const features = [
   { title: "Real-Time Validation", desc: "Instantly verify phone numbers as they are entered on Lead, Contact, and Account records." },
@@ -26,7 +27,7 @@ const features = [
         </p>
       </div>
 
-      <CountryFactSnippet />
+      <ReviewSnippet/>
 
       <section class="grid md:grid-cols-2 gap-8 mb-20">
         {features.map(f => (
@@ -44,6 +45,8 @@ const features = [
     Launch the Test Tool
   </a>
 </section>
+
+      <CountryFactSnippet />
 
 
       <section class="py-16 border-t">
