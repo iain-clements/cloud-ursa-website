@@ -1,0 +1,29 @@
+---
+/* 
+ * Version: 0.2
+ * Date: 2026-07-17 10:15
+ */
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/ui/Container.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <Container>
+    <main class="py-12 prose dark:prose-invert max-w-none">
+      <h1 class="text-4xl font-bold mb-8">{post.data.title}</h1>
+      <Content />
+    </main>
+  </Container>
+</Layout>

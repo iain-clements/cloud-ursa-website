@@ -6,6 +6,9 @@ import Layout from '../layouts/Layout.astro';
 import Container from '../components/ui/Container.astro';
 import { caseStudies } from '../data/caseStudies.js';
 import { clients } from '../data/clients.js';
+import CountryFactSnippet from '../components/CountryFactSnippet.astro';
+
+
 ---
 
 <Layout title="Case Studies | Cloud Ursa">
@@ -30,7 +33,10 @@ import { clients } from '../data/clients.js';
           </article>
         ))}
       </div>
+      
+                  <CountryFactSnippet />
 
+                  
       <section class="mt-20 border-t pt-10">
         <h3 class="text-xl font-bold mb-8">Clients we've helped:</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -39,6 +45,11 @@ import { clients } from '../data/clients.js';
           ))}
         </div>
       </section>
+
+
+
+
+
     </main>
   </Container>
 </Layout>
