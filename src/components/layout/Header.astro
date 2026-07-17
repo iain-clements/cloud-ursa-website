@@ -13,7 +13,6 @@ import Container from "../ui/Container.astro";
       </a>
       
       <nav class="flex items-center space-x-6">
-        <!-- Dropdown for Services -->
         <div class="relative group">
           <button class="font-medium hover:text-blue-600 flex items-center">
             Services ▾
@@ -24,9 +23,17 @@ import Container from "../ui/Container.astro";
             <a href="/services/data-quality" class="block px-4 py-2 hover:bg-gray-50">Data Quality</a>
           </div>
         </div>
+        <div class="relative group">
+          <button class="font-medium hover:text-blue-600 flex items-center">
+            Apps ▾
+          </button>
+          <div class="absolute right-0 top-full pt-2 hidden group-hover:block w-48 bg-white border shadow-lg rounded-lg z-50">
+        <a href="/ringstrue" class="block px-4 py-2 hover:bg-gray-50">RingsTrue</a>
+                <a href="/map" class="block px-4 py-2 hover:bg-gray-50">World Couny Code Map</a>
 
+        </div>
+        </div>
         <a href="/case-studies" class="font-medium hover:text-blue-600">Case Studies</a>
-        <a href="/ringstrue" class="font-medium hover:text-blue-600">RingsTrue</a>
         <a href="/blog" class="font-medium hover:text-blue-600">Insights</a>
         <a href="/contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Contact</a>
       </nav>
