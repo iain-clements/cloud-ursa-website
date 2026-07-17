@@ -1,9 +1,9 @@
 ---
-/* * Version: 0.6 
- * Date: 2026-07-16 20:30
+/* * Version: 0.8 
+ * Date: 2026-07-17 15:10
  */
 import Layout from '../layouts/Layout.astro';
-import ClientMarquee from '../components/ClientMarquee.astro'; // Added Import
+import ClientMarquee from '../components/ClientMarquee.astro'; 
 import { countryCodes } from '../data/countryCodes.js';
 ---
 
@@ -12,10 +12,37 @@ import { countryCodes } from '../data/countryCodes.js';
     <h1 class="text-3xl font-bold mb-4">Test Your Data Knowledge</h1>
     <p class="text-gray-600 mb-8">Phone number formatting is tricky. Imagine doing this for 10,000 records!</p>
     
-    <div id="quiz-box" class="p-8 border-2 border-gray-100 rounded-2xl shadow-lg bg-white">
-      <p class="text-xl mb-6">What is the country code for <strong id="country-name" class="text-blue-600">...</strong>?</p>
-      <div class="grid grid-cols-2 gap-4" id="options"></div>
-      <p id="result" class="mt-8 font-bold text-lg min-h-[1.5rem]"></p>
+    <div id="quiz-box" class="p-8 border-2 border-gray-100 rounded-2xl shadow-lg bg-white min-h-[360px] flex flex-col justify-between">
+      <div id="game-active">
+        <!-- Progress Tracker -->
+        <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
+          Question <span id="round-num">1</span> of 5
+        </p>
+        <p class="text-xl mb-6">What is the country code for <strong id="country-name" class="text-blue-600">...</strong>?</p>
+        <div class="grid grid-cols-2 gap-4" id="options"></div>
+        <p id="result" class="mt-8 font-bold text-lg min-h-[1.5rem]"></p>
+      </div>
+
+      <!-- End of Game Screen -->
+      <div id="game-over" class="hidden my-auto py-4">
+        <h3 class="text-2xl font-bold text-gray-800 mb-2">Quiz Complete!</h3>
+        <p class="text-gray-600 mb-6 text-sm">How well did you handle formatting manually?</p>
+        
+        <div class="max-w-sm mx-auto mb-8">
+          <div class="bg-blue-50 border border-blue-200 p-6 rounded-xl">
+            <span class="block text-4xl font-extrabold text-blue-600 mb-1">
+              <span id="final-correct">0</span> / 5
+            </span>
+            <span class="text-xs uppercase tracking-wider font-semibold text-blue-700">
+              Accurate First Guesses
+            </span>
+          </div>
+        </div>
+
+        <button id="btn-restart" class="bg-gray-800 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-gray-900 transition active:scale-95">
+          Try Again
+        </button>
+      </div>
     </div>
 
     <div class="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-xl">
@@ -28,28 +55,50 @@ import { countryCodes } from '../data/countryCodes.js';
       </a>
     </div>
 
-      <section class="py-12 border-t">
-    <p class="text-center text-sm text-gray-500 mb-6 font-medium uppercase tracking-widest">
-      Companies using our data solutions
-    </p>
-    <ClientMarquee />
-  </section>
-
-  
+    <section class="py-12 border-t mt-12">
+      <p class="text-center text-sm text-gray-500 mb-6 font-medium uppercase tracking-widest">
+        Companies using our data solutions
+      </p>
+      <ClientMarquee />
+    </section>
   </main>
-
-
 </Layout>
 
 <script is:inline define:vars={{ countryCodes }}>
-  /* ... (Existing script remains identical) ... */
   let current;
+  let roundsPlayed = 0;
+  let correctCount = 0;
+
   const countryEl = document.getElementById('country-name');
   const optionsEl = document.getElementById('options');
   const resultEl = document.getElementById('result');
+  const roundNumEl = document.getElementById('round-num');
+  
+  const gameActiveBox = document.getElementById('game-active');
+  const gameOverBox = document.getElementById('game-over');
+  const finalCorrectEl = document.getElementById('final-correct');
+  const restartBtn = document.getElementById('btn-restart');
 
-  function next() {
+  function startQuiz() {
+    roundsPlayed = 0;
+    correctCount = 0;
+    
+    gameOverBox.classList.add('hidden');
+    gameActiveBox.classList.remove('hidden');
+    
+    nextQuestion();
+  }
+
+  function nextQuestion() {
+    if (roundsPlayed >= 5) {
+      showSummary();
+      return;
+    }
+
+    roundsPlayed++;
+    roundNumEl.textContent = roundsPlayed;
     resultEl.textContent = '';
+    
     current = countryCodes[Math.floor(Math.random() * countryCodes.length)];
     countryEl.textContent = current.name;
     
@@ -64,23 +113,49 @@ import { countryCodes } from '../data/countryCodes.js';
     options.forEach(c => {
       const btn = document.createElement('button');
       btn.textContent = c.code;
+      // Store the code in a dataset parameter to find the correct answer easily later
+      btn.dataset.code = c.code; 
       btn.className = "p-4 border-2 border-blue-200 rounded-lg font-semibold transition-all duration-200 hover:border-blue-500 hover:bg-blue-50 active:scale-95";
+      
       btn.onclick = () => {
+        // Freeze interactions instantly by disabling all option selections
+        const allBtns = optionsEl.querySelectorAll('button');
+        allBtns.forEach(b => b.disabled = true);
+
         if(c.code === current.code) {
           btn.className = "p-4 border-2 rounded-lg font-semibold bg-green-500 text-white border-green-600";
           resultEl.textContent = "Correct! ✅";
           resultEl.style.color = "#16a34a";
-          const allBtns = optionsEl.querySelectorAll('button');
-          allBtns.forEach(b => b.disabled = true);
-          setTimeout(next, 1200);
+          correctCount++;
         } else {
+          // Highlight selection as incorrect
           btn.className = "p-4 border-2 rounded-lg font-semibold bg-red-500 text-white border-red-600";
-          resultEl.textContent = "Incorrect, try again! ❌";
+          
+          // Find and reveal the actual correct choice button
+          const correctBtn = optionsEl.querySelector(`[data-code="${current.code}"]`);
+          if (correctBtn) {
+            correctBtn.className = "p-4 border-2 rounded-lg font-semibold bg-green-500 text-white border-green-600 animate-pulse";
+          }
+
+          resultEl.textContent = `Incorrect! The code for ${current.name} is ${current.code}. ❌`;
           resultEl.style.color = "#dc2626";
         }
+        
+        // Give them 1.8 seconds to see the right answer revealed before switching
+        setTimeout(nextQuestion, 1800);
       };
       optionsEl.appendChild(btn);
     });
   }
-  next();
+
+  function showSummary() {
+    gameActiveBox.classList.add('hidden');
+    gameOverBox.classList.remove('hidden');
+    
+    finalCorrectEl.textContent = correctCount;
+  }
+
+  restartBtn.onclick = startQuiz;
+  
+  startQuiz();
 </script>

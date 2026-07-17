@@ -17,12 +17,9 @@ import DynamicFeature from '../components/DynamicFeature.astro';
 <h1>Let's work together</h1>
   <p>Fill out the form below...</p>
   
-  <!-- Nudge them with proof -->
-  <div class="mt-12">
-    <DynamicFeature />
-  </div>
+
     <!-- Replace the action URL with your Formspree/Make.com webhook endpoint -->
-    <form action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST" class="mt-8 space-y-6">
+    <form action="https://formspree.io/f/mqerpgpd" method="POST" class="mt-8 space-y-6">
       <div>
         <label class="block text-sm font-medium text-gray-700">Name</label>
         <input type="text" name="name" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
@@ -42,5 +39,12 @@ import DynamicFeature from '../components/DynamicFeature.astro';
         Send Message
       </button>
     </form>
+
+      <!-- Nudge them with proof -->
+  <div class="mt-12">
+    <DynamicFeature />
+  </div>
+
+
   </main>
 </Layout>
