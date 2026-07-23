@@ -1,0 +1,152 @@
+---
+/* * Version: 0.1 
+ * Date: 2026-07-16 18:30
+ */
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/ui/Container.astro';
+import DynamicFeature from '../../components/DynamicFeature.astro';
+import { caseStudies } from '../../data/casestudies.js';
+
+---
+
+<Layout title="Salesforce Integration Services | Cloud Ursa LTD">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    
+    <!-- Hero Section -->
+    <section class="text-center py-12">
+      <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight">
+        Seamless <span class="text-blue-600">Salesforce Integration</span> Services
+      </h1>
+      <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+        Eliminate data silos, automate complex workflows, and establish a single source of truth by securely connecting Salesforce with your core business platforms[cite: 7].
+      </p>
+      <div class="mt-10 flex gap-4 justify-center">
+        <a href="/contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+          Discuss Your Integration
+        </a>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-12 border-t border-gray-100">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+          Unifying Your Tech Stack
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Salesforce is most powerful when it acts as the central hub of your operations. However, critical business data often resides across multiple platforms—ERP systems, recruitment portals, HR engines, and service desks. 
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          At Cloud Ursa, we specialize in building robust, bidirectional integrations that link Salesforce to the tools your teams rely on daily[cite: 7]. Whether you require real-time API callouts, automated middleware solutions, or event-driven syncs, we ensure your systems communicate seamlessly without disrupting business operations[cite: 7].
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Business Benefits -->
+    <section class="py-16 bg-gray-50 rounded-2xl px-8 my-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">
+        Why Connect Salesforce to Your Business Ecosystem?
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">360-Degree Operational Visibility</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Give your sales, service, and operations teams immediate context. View financial metrics, recruitment status, or support histories directly within Salesforce record layouts without context-switching.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Elimination of Manual Data Entry</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Reduce human error and admin fatigue. Synchronize data automatically across platforms—from closed-won deals transforming into ERP orders, to candidate updates syncing seamlessly.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Accelerated Workflow Automation</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Trigger cross-system processes instantly. Automatically provision resources, issue invoices, or sync employee onboarding steps across departments the moment status fields update.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">High-Performance Scalability</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Architect integrations designed to grow alongside your volume. Built with governor limits, batch processing, and asynchronous messaging patterns in mind to handle rapid scaling smoothly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enterprise-Grade Security & Governance -->
+    <section class="py-12">
+      <div class="border-l-4 border-blue-600 pl-6 py-2 bg-blue-50/50 rounded-r-xl p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">
+          Enterprise Security & Governance
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Data integrity and protection are core to our architectural strategy. Integrating systems must never compromise security.
+        </p>
+        <ul class="space-y-3 text-sm text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 font-bold">✓</span>
+            <span><strong>Secure Authentication:</strong> Implementation using modern OAuth 2.0 flows, Named Credentials, and secure certificate management to keep secrets out of code base repositories.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 font-bold">✓</span>
+            <span><strong>Data Encryption & Compliance:</strong> End-to-end encryption in transit and at rest, maintaining strict compliance with GDPR and global privacy requirements.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 font-bold">✓</span>
+            <span><strong>Resilient Error Handling:</strong> Comprehensive logging, automated alert channels, and custom retry logic to ensure no transaction drops during system outages.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Platforms We Connect -->
+    <section class="py-16">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">Platforms We Frequently Connect</h2>
+        <p class="text-gray-600 mt-2">Custom-built Apex integrations, REST/SOAP callouts, and middleware solutions tailored to your tech stack.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 border border-gray-200 rounded-xl bg-white shadow-sm hover:border-blue-500 transition">
+          <h3 class="font-bold text-lg text-gray-900 mb-1">NetSuite</h3>
+          <p class="text-xs text-gray-600">Unify CRM with financial and ERP data for automated billing, order management, and revenue tracking.</p>
+        </div>
+        <div class="p-6 border border-gray-200 rounded-xl bg-white shadow-sm hover:border-blue-500 transition">
+          <h3 class="font-bold text-lg text-gray-900 mb-1">Teamtailor</h3>
+          <p class="text-xs text-gray-600">Synchronize applicant updates, candidate profiles, and recruitment stages directly with custom objects.</p>
+        </div>
+        <div class="p-6 border border-gray-200 rounded-xl bg-white shadow-sm hover:border-blue-500 transition">
+          <h3 class="font-bold text-lg text-gray-900 mb-1">Workday</h3>
+          <p class="text-xs text-gray-600">Connect HR systems to maintain accurate user provisioning, employee directories, and hierarchy data.</p>
+        </div>
+        <div class="p-6 border border-gray-200 rounded-xl bg-white shadow-sm hover:border-blue-500 transition">
+          <h3 class="font-bold text-lg text-gray-900 mb-1">Zendesk</h3>
+          <p class="text-xs text-gray-600">Align customer support tickets with account history to provide unified service experiences.</p>
+        </div>
+      </div>
+      <p class="text-center text-sm text-gray-500 mt-8">
+        Need to connect a proprietary API or custom legacy database? We build tailored endpoints and middleware pipelines for bespoke systems.
+      </p>
+    </section>
+
+      <section class="py-16">
+    <Container>
+      <!-- We pass the caseStudies data into the component -->
+      <DynamicFeature studies={caseStudies} />
+    </Container>
+  </section>
+
+    <!-- Call to Action -->
+    <section class="py-12 bg-blue-600 rounded-2xl text-white text-center px-6">
+      <h2 class="text-3xl font-bold mb-4">Ready to Connect Your Ecosystem?</h2>
+      <p class="text-blue-100 max-w-xl mx-auto mb-8">
+        Let’s discuss your system architecture and design a secure, scalable integration path tailored to your business needs[cite: 7].
+      </p>
+      <a href="/contact" class="inline-block bg-white text-blue-600 font-bold px-8 py-3 rounded-lg hover:bg-blue-50 transition">
+        Schedule an Integration Audit
+      </a>
+    </section>
+
+  </main>
+</Layout>

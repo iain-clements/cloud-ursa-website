@@ -1,13 +1,72 @@
 ---
-const stories = [
-  { title: "Scaling FinTech Data", link: "/case-studies" },
-  { title: "RingsTrue Deployment", link: "/ringstrue" },
+// Version: 0.7
+// Date: 2026-07-23 12:55
+
+// Accept props from parent pages (e.g., <DynamicFeature studies={caseStudies} />)
+const { studies = [] } = Astro.props;
+
+// Fallback list in case no props are passed
+const defaultStories = [
+  { 
+    title: "Scaling Data Throughput for FinTech", 
+    summary: "Refactored legacy middleware into a high-performance integration layer.", 
+    link: "/case-studies" 
+  },
+  { 
+    title: "RingsTrue: Eliminating Bad Data", 
+    summary: "Deployed RingsTrue to automate phone number validation.", 
+    link: "/ringstrue" 
+  }
 ];
-// Randomly pick one on page load
-const feature = stories[Math.floor(Math.random() * stories.length)];
+
+const rawList = studies.length > 0 ? studies : defaultStories;
+
+// Normalize objects for rendering
+const list = rawList.map(item => ({
+  title: item.title,
+  summary: item.summary || item.subtitle || '',
+  // Points to main case studies page (or custom internal link)
+  link: item.link || "/case-studies" 
+}));
+
+// Initial fallback for server HTML
+const feature = list[0];
 ---
-<section class="p-8 border-2 border-blue-600 rounded-2xl bg-blue-50">
-  <h2 class="text-xl font-bold">Featured Success Story</h2>
-  <p class="mt-2 text-gray-700">See how we helped a client with: {feature.title}</p>
-  <a href={feature.link} class="mt-4 inline-block text-blue-600 font-bold">Read the story →</a>
+
+<section 
+  id="dynamic-feature-card" 
+  data-stories={JSON.stringify(list)} 
+  class="p-8 border-2 border-blue-600 rounded-2xl bg-blue-50"
+>
+  <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Featured Success Story</span>
+  <h2 id="feature-title" class="text-xl font-bold text-gray-900 mt-1">{feature.title}</h2>
+  <p id="feature-summary" class="mt-2 text-gray-700 text-sm leading-relaxed">
+    {feature.summary}
+  </p>
+  <a id="feature-link" href={feature.link} class="mt-4 inline-block text-blue-600 font-bold hover:underline text-sm">
+    Read the case study →
+  </a>
 </section>
+
+<script>
+  // Runs client-side on every page load/refresh
+  const card = document.getElementById('dynamic-feature-card');
+  if (card) {
+    const rawData = card.getAttribute('data-stories');
+    if (rawData) {
+      const stories = JSON.parse(rawData);
+      if (stories.length > 0) {
+        // Pick a random story in the browser
+        const randomStory = stories[Math.floor(Math.random() * stories.length)];
+        
+        const titleEl = document.getElementById('feature-title');
+        const summaryEl = document.getElementById('feature-summary');
+        const linkEl = document.getElementById('feature-link') as HTMLAnchorElement;
+
+        if (titleEl && randomStory.title) titleEl.textContent = randomStory.title;
+        if (summaryEl && randomStory.summary) summaryEl.textContent = randomStory.summary;
+        if (linkEl && randomStory.link) linkEl.href = randomStory.link;
+      }
+    }
+  }
+</script>

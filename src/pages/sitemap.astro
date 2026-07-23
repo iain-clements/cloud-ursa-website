@@ -1,0 +1,39 @@
+---
+// Version: 0.1
+// Date: 2026-07-23 13:00
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sitemap | Cloud Ursa LTD">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-8">Sitemap</h1>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 border-b pb-2 mb-4">Main</h2>
+        <ul class="space-y-2 text-gray-600">
+          <li><a href="/" class="hover:text-blue-600">Home</a></li>
+          <li><a href="/contact" class="hover:text-blue-600">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 border-b pb-2 mb-4">Services</h2>
+        <ul class="space-y-2 text-gray-600">
+          <li><a href="/services/integration" class="hover:text-blue-600">Integration Services</a></li>
+          <li><a href="/services/managed-services" class="hover:text-blue-600">Managed Services</a></li>
+          <li><a href="/services/data-quality" class="hover:text-blue-600">Data Quality</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold text-gray-900 border-b pb-2 mb-4">Products & Work</h2>
+        <ul class="space-y-2 text-gray-600">
+          <li><a href="/ringstrue" class="hover:text-blue-600">RingsTrue</a></li>
+          <li><a href="/case-studies" class="hover:text-blue-600">Case Studies</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -38,26 +38,20 @@ const coreClouds = [
       </div>
     </section>
 
-    <!-- Core Services Grid -->
-  <section class="py-16 bg-white border-t border-gray-100">
+        <!-- Core Platforms Grid -->
+  <section class="py-16 bg-white">
     <Container>
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">How We Help Your Business</h2>
-        <p class="text-gray-600 mt-2">Whether implementing from scratch, optimizing, or rescuing a stalled org.</p>
+        <h2 class="text-3xl font-bold text-gray-900">Platforms We Support</h2>
+        <p class="text-gray-600 mt-2">Deep expertise across the complete Salesforce ecosystem.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Integration & Middleware</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">Secure, real-time data pipelines connecting Salesforce to ERPs, custom databases, and external platforms.</p>
-        </div>
-        <div class="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Org Recovery & Rescue</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">System audits and rescue missions for struggling orgs. We stabilize, document, and eliminate technical debt.</p>
-        </div>
-        <div class="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Data Quality & Tooling</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">Proprietary tools like RingsTrue to keep your phone data validated, structured, and TPS compliant.</p>
-        </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {coreClouds.map(cloud => (
+          <div class="p-5 border border-gray-100 rounded-lg bg-gray-50">
+            <h4 class="font-bold text-gray-900 mb-1">{cloud.name}</h4>
+            <p class="text-xs text-gray-600">{cloud.desc}</p>
+          </div>
+        ))}
       </div>
     </Container>
   </section>
@@ -66,15 +60,8 @@ const coreClouds = [
   <section class="py-16 text-center">
     <ClientMarquee />
   </section>
-<!-- Trust Anchor -->
 
-<!-- Featured Content -->
-  <section class="py-16">
-    <Container>
-      <!-- We pass the caseStudies data into the component -->
-      <DynamicFeature studies={caseStudies} />
-    </Container>
-  </section>
+
 
   <!-- Product Spotlight: RingsTrue -->
   <section class="py-16 bg-blue-50 border-y border-blue-100">
@@ -102,6 +89,42 @@ const coreClouds = [
     </Container>
   </section>
 
+    <!-- Core Services Grid -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-gray-900">How We Help Your Business</h2>
+        <p class="text-gray-600 mt-2">Whether implementing from scratch, optimizing, or rescuing a stalled org.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Integration & Middleware</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Secure, real-time data pipelines connecting Salesforce to ERPs, custom databases, and external platforms.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Org Recovery & Rescue</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">System audits and rescue missions for struggling orgs. We stabilize, document, and eliminate technical debt.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition bg-white">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Data Quality & Tooling</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Proprietary tools like RingsTrue to keep your phone data validated, structured, and TPS compliant.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  
+<!-- Trust Anchor -->
+
+<!-- Featured Content -->
+  <section class="py-16">
+    <Container>
+      <!-- We pass the caseStudies data into the component -->
+      <DynamicFeature studies={caseStudies} />
+    </Container>
+  </section>
+
+
   
 
     <!-- Value Proposition -->
@@ -120,23 +143,7 @@ const coreClouds = [
       </div>
     </section>
 
-    <!-- Core Platforms Grid -->
-  <section class="py-16 bg-white">
-    <Container>
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-bold text-gray-900">Platforms We Support</h2>
-        <p class="text-gray-600 mt-2">Deep expertise across the complete Salesforce ecosystem.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {coreClouds.map(cloud => (
-          <div class="p-5 border border-gray-100 rounded-lg bg-gray-50">
-            <h4 class="font-bold text-gray-900 mb-1">{cloud.name}</h4>
-            <p class="text-xs text-gray-600">{cloud.desc}</p>
-          </div>
-        ))}
-      </div>
-    </Container>
-  </section>
+
 
   </main>
-</Layout>
+</Layout> 
