@@ -1,49 +1,49 @@
 ---
 /* 
- * Version: 0.7 
- * Date: 2026-07-23 11:45
+ * Version: 0.8 
+ * Date: 2026-07-23 12:10
  */
 import Container from "../ui/Container.astro";
 ---
-<header class="py-4 border-b px-4 sm:px-6 relative">
+<header class="py-4 border-b px-4 sm:px-6 relative bg-white">
   <Container>
     <div class="flex justify-between items-center">
-      <!-- Logo: Scaled for mobile and desktop -->
+      <!-- Logo -->
       <a href="/" class="flex items-center">
-        <img src="/logo.svg" alt="Cloud Ursa Logo" class="h-16 md:h-14 w-auto object-contain" />
+        <img src="/logo.svg" alt="Cloud Ursa Logo" class="h-10 md:h-14 w-auto object-contain" />
       </a>
 
-      <!-- Mobile Hamburger Button -->
+      <!-- Mobile Menu Toggle Button -->
       <button 
         id="mobile-menu-btn"
         type="button" 
         class="md:hidden p-2 text-gray-700 hover:text-blue-600 focus:outline-none"
-        aria-label="Toggle navigation menu"
+        aria-label="Toggle Navigation"
       >
         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
       
-      <!-- Desktop Navigation (Hidden on small screens, visible on md+) -->
+      <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-6">
         <div class="relative group">
-          <button class="font-medium hover:text-blue-600 flex items-center">
+          <button class="font-medium hover:text-blue-600 flex items-center py-2">
             Services ▾
           </button>
-          <div class="absolute right-0 top-full pt-2 hidden group-hover:block w-48 bg-white border shadow-lg rounded-lg z-50">
-            <a href="/services" class="block px-4 py-2 hover:bg-gray-50">Overview</a>
-            <a href="/services/managed-services" class="block px-4 py-2 hover:bg-gray-50">Managed Services</a>
-            <a href="/services/data-quality" class="block px-4 py-2 hover:bg-gray-50">Data Quality</a>
+          <div class="absolute right-0 top-full pt-2 hidden group-hover:block w-52 bg-white border shadow-lg rounded-lg z-50">
+            <a href="/services" class="block px-4 py-2 text-sm hover:bg-gray-50">Overview</a>
+            <a href="/services/managed-services" class="block px-4 py-2 text-sm hover:bg-gray-50">Managed Services</a>
+            <a href="/services/data-quality" class="block px-4 py-2 text-sm hover:bg-gray-50">Data Quality Services</a>
           </div>
         </div>
         <div class="relative group">
-          <button class="font-medium hover:text-blue-600 flex items-center">
+          <button class="font-medium hover:text-blue-600 flex items-center py-2">
             Apps ▾
           </button>
-          <div class="absolute right-0 top-full pt-2 hidden group-hover:block w-48 bg-white border shadow-lg rounded-lg z-50">
-            <a href="/ringstrue" class="block px-4 py-2 hover:bg-gray-50">RingsTrue</a>
-            <a href="/map" class="block px-4 py-2 hover:bg-gray-50">World Country Code Map</a>
+          <div class="absolute right-0 top-full pt-2 hidden group-hover:block w-56 bg-white border shadow-lg rounded-lg z-50">
+            <a href="/ringstrue" class="block px-4 py-2 text-sm hover:bg-gray-50">RingsTrue</a>
+            <a href="/map" class="block px-4 py-2 text-sm hover:bg-gray-50">World Country Code Map</a>
           </div>
         </div>
         <a href="/case-studies" class="font-medium hover:text-blue-600">Case Studies</a>
@@ -52,20 +52,20 @@ import Container from "../ui/Container.astro";
       </nav>
     </div>
 
-    <!-- Mobile Dropdown Menu -->
+    <!-- Mobile Dropdown Navigation -->
     <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-100 flex flex-col space-y-3">
-      <div class="font-semibold text-gray-500 text-sm uppercase tracking-wider">Services</div>
-      <a href="/services" class="pl-2 py-1 text-gray-700 hover:text-blue-600">Overview</a>
-      <a href="/services/managed-services" class="pl-2 py-1 text-gray-700 hover:text-blue-600">Managed Services</a>
-      <a href="/services/data-quality" class="pl-2 py-1 text-gray-700 hover:text-blue-600">Data Quality</a>
+      <div class="font-semibold text-gray-400 text-xs uppercase tracking-wider">Services</div>
+      <a href="/services" class="pl-2 py-1 text-gray-700 hover:text-blue-600 text-sm">Overview</a>
+      <a href="/services/managed-services" class="pl-2 py-1 text-gray-700 hover:text-blue-600 text-sm">Managed Services</a>
+      <a href="/services/data-quality" class="pl-2 py-1 text-gray-700 hover:text-blue-600 text-sm">Data Quality Services</a>
       
-      <div class="font-semibold text-gray-500 text-sm uppercase tracking-wider pt-2">Apps</div>
-      <a href="/ringstrue" class="pl-2 py-1 text-gray-700 hover:text-blue-600">RingsTrue</a>
-      <a href="/map" class="pl-2 py-1 text-gray-700 hover:text-blue-600">World Couny Code Map</a>
+      <div class="font-semibold text-gray-400 text-xs uppercase tracking-wider pt-2">Apps & Tools</div>
+      <a href="/ringstrue" class="pl-2 py-1 text-gray-700 hover:text-blue-600 text-sm">RingsTrue</a>
+      <a href="/map" class="pl-2 py-1 text-gray-700 hover:text-blue-600 text-sm">World Country Code Map</a>
       
       <a href="/case-studies" class="font-medium text-gray-800 hover:text-blue-600 pt-2">Case Studies</a>
       <a href="/blog" class="font-medium text-gray-800 hover:text-blue-600">Insights</a>
-      <a href="/contact" class="bg-blue-600 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-700 transition mt-2">Contact</a>
+      <a href="/contact" class="bg-blue-600 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-700 transition mt-2">Contact Us</a>
     </div>
   </Container>
 </header>
