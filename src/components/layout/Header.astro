@@ -1,18 +1,32 @@
 ---
 /* 
- * Version: 0.4
- * Date: 2026-07-16 18:40
+ * Version: 0.7 
+ * Date: 2026-07-23 11:45
  */
 import Container from "../ui/Container.astro";
 ---
-<header class="py-6 border-b px-6">
+<header class="py-4 border-b px-4 sm:px-6 relative">
   <Container>
     <div class="flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold tracking-tight">
-        Cloud <span style="color:#2563eb">Ursa</span>
+      <!-- Logo: Scaled for mobile and desktop -->
+      <a href="/" class="flex items-center">
+        <img src="/logo.svg" alt="Cloud Ursa Logo" class="h-16 md:h-14 w-auto object-contain" />
       </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        id="mobile-menu-btn"
+        type="button" 
+        class="md:hidden p-2 text-gray-700 hover:text-blue-600 focus:outline-none"
+        aria-label="Toggle navigation menu"
+      >
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
       
-      <nav class="flex items-center space-x-6">
+      <!-- Desktop Navigation (Hidden on small screens, visible on md+) -->
+      <nav class="hidden md:flex items-center space-x-6">
         <div class="relative group">
           <button class="font-medium hover:text-blue-600 flex items-center">
             Services ▾
@@ -28,15 +42,41 @@ import Container from "../ui/Container.astro";
             Apps ▾
           </button>
           <div class="absolute right-0 top-full pt-2 hidden group-hover:block w-48 bg-white border shadow-lg rounded-lg z-50">
-        <a href="/ringstrue" class="block px-4 py-2 hover:bg-gray-50">RingsTrue</a>
-                <a href="/map" class="block px-4 py-2 hover:bg-gray-50">World Couny Code Map</a>
-
-        </div>
+            <a href="/ringstrue" class="block px-4 py-2 hover:bg-gray-50">RingsTrue</a>
+            <a href="/map" class="block px-4 py-2 hover:bg-gray-50">World Couny Code Map</a>
+          </div>
         </div>
         <a href="/case-studies" class="font-medium hover:text-blue-600">Case Studies</a>
         <a href="/blog" class="font-medium hover:text-blue-600">Insights</a>
         <a href="/contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Contact</a>
       </nav>
     </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-100 flex flex-col space-y-3">
+      <div class="font-semibold text-gray-500 text-sm uppercase tracking-wider">Services</div>
+      <a href="/services" class="pl-2 py-1 text-gray-700 hover:text-blue-600">Overview</a>
+      <a href="/services/managed-services" class="pl-2 py-1 text-gray-700 hover:text-blue-600">Managed Services</a>
+      <a href="/services/data-quality" class="pl-2 py-1 text-gray-700 hover:text-blue-600">Data Quality</a>
+      
+      <div class="font-semibold text-gray-500 text-sm uppercase tracking-wider pt-2">Apps</div>
+      <a href="/ringstrue" class="pl-2 py-1 text-gray-700 hover:text-blue-600">RingsTrue</a>
+      <a href="/map" class="pl-2 py-1 text-gray-700 hover:text-blue-600">World Couny Code Map</a>
+      
+      <a href="/case-studies" class="font-medium text-gray-800 hover:text-blue-600 pt-2">Case Studies</a>
+      <a href="/blog" class="font-medium text-gray-800 hover:text-blue-600">Insights</a>
+      <a href="/contact" class="bg-blue-600 text-white text-center py-2 rounded-lg font-bold hover:bg-blue-700 transition mt-2">Contact</a>
+    </div>
   </Container>
 </header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
